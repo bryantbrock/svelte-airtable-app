@@ -1,4 +1,4 @@
-### Svelte Client
+### Svelte Airtable Application
 
 Running is simple, though you need a `.env` file with `HOST`, `AIRTABLE_BASE_KEY`, `AIRTABLE_API_KEY`, set. Then run
 ```
