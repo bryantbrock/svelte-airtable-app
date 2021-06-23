@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess';
+import image from 'svelte-iamge';
 import alias from '@rollup/plugin-alias';
 
 const production = !process.env.ROLLUP_WATCH;
@@ -16,6 +17,7 @@ const aliases = alias({
     { find: 'styles', replacement: 'src/styles' },
     { find: 'utils', replacement: 'src/utils' },
     { find: 'routes', replacement: 'src/routes' },
+    { find: 'partials', replacement: 'src/partials' },
     { find: 'api', replacement: 'src/api' },
   ]
 });
@@ -52,7 +54,10 @@ export default {
   plugins: [
     aliases,
     svelte({
-      preprocess: sveltePreprocess({ postcss: true }),
+      preprocess: [
+        sveltePreprocess({ postcss: true, }),
+        image()
+      ],
       compilerOptions: {
         dev: !production,
       },
